@@ -2,6 +2,14 @@
 
 **CLI to list Sentry events**
 
+## Install
+
+Install from GitHub as a global CLI with:
+
+```
+npm i jakesidsmith/sentry-events -g
+```
+
 ## Setup
 
 Add a Sentry token to the environment that has access to project events.

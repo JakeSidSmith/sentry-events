@@ -48,7 +48,7 @@ async function getEvents (url) {
       console.error(error && error.message ? error.message : error);
 
       if (error.response) {
-        console.error(error.response.data);
+        console.error(error.response.data.detail ? error.response.data.detail : error.response.data);
       }
 
       return process.exit(1);

@@ -1,0 +1,34 @@
+{
+  "name": "sentry-events",
+  "version": "0.0.0",
+  "description": "CLI to list Sentry events",
+  "main": "index.js",
+  "bin": {
+    "sentry-events": "index.js"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "parse-link-header": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakesidsmith/sentry-events.git"
+  },
+  "keywords": [
+    "sentry",
+    "events",
+    "list",
+    "api",
+    "cli"
+  ],
+  "author": "Jake 'Sid' Smith",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jakesidsmith/sentry-events/issues"
+  },
+  "homepage": "https://github.com/jakesidsmith/sentry-events#readme"
+}

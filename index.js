@@ -26,6 +26,32 @@ if (!MATCHES_ORGANIZATION_PROJECT.test(organizationProject)) {
 
 const pathname = `/api/0/projects/${organizationProject}/events/`;
 
+async function withLoading (promise) {
+  let dots = 0;
+  process.stderr.write('');
+
+  function loadingDots () {
+    process.stderr.clearLine();
+    process.stderr.cursorTo(0);
+    process.stderr.write(`Loading events${Array(dots).fill('.').join('')}`);
+    dots += 1;
+    dots = dots % 4;
+  }
+
+  const interval = setInterval(loadingDots, 200);
+
+  return await promise
+    .then((result) => {
+      clearInterval(interval);
+
+      process.stderr.clearLine();
+      process.stderr.cursorTo(0);
+      process.stderr.write('Done!\n')
+
+      return result;
+    });
+}
+
 async function getEvents (url) {
   return await axios({
     url,
@@ -56,7 +82,7 @@ async function getEvents (url) {
 }
 
 async function getAllEvents () {
-  const allEvents = await getEvents(`${HOST}${pathname}`);
+  const allEvents = await withLoading(getEvents(`${HOST}${pathname}`));
 
   process.stdout.write(JSON.stringify({events: allEvents}, undefined, 2));
 }
